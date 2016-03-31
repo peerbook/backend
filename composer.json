@@ -1,0 +1,32 @@
+{
+    "name": "spull/peerbieb",
+    "description": "Peerbieb",
+    "authors": [
+        {
+            "name": "Han van der Veen",
+            "email": "han@spull.nl"
+        },
+        {
+            "name": "Albert Wieringa",
+            "email": "albert@spull.nl"
+        }
+    ],
+    "require": {
+        "yiisoft/yii": "^1",
+        "sammaye/mongoyii": "^8",
+        "swiftmailer/swiftmailer": "^5",
+        "smottt/wideimage": "dev-master",
+        "willdurand/geocoder": "^3.1"
+    },
+    "require-dev": {
+        
+    },
+    "autoload": {
+        "classmap": [
+            "webroot/protected/components",
+            "webroot/protected/controllers",
+            "webroot/protected/models",
+            "webroot/protected/extensions"
+        ]
+    }
+}

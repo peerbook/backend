@@ -1,0 +1,28 @@
+RewriteEngine on
+
+RewriteCond %{REMOTE_ADDR} !^83\.117\.59\.59
+RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+RewriteCond %{DOCUMENT_ROOT}/maintenance.enable -f
+RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+RewriteRule ^.*$ /maintenance.html [R=503,L]
+ErrorDocument 503 /maintenance.html
+
+# www redirect to non www redirect
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# https redirect
+#RewriteCond %{HTTPS} off
+#RewriteCond %{HTTP_HOST} !\.plank\.nl$ [NC]
+#RewriteRule ^(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule data/(.*)\.jpg$ /index.php/data/image/path/$1 [L,R]
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php
+
+
